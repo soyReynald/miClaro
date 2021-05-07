@@ -65,6 +65,28 @@
           <div class="link">Not yet signed up? <a class="signupNowBtn" onclick="showSignupDiv();">Signup now</a></div>
         </section>
     </div>
+    <div class="wrapper" id="usersListing" style="display: none;">
+      <section class="users">
+        <header>
+          <div class="content">
+            <img src="" alt="" id="userImageProfile"> <!-- php/images/<?php echo $row['img']; ?> -->
+            <div class="details">
+              <span id="user-fullname"></span>
+              <p id="user-status"></p>
+            </div>
+          </div>
+          <a href="#logout" class="logout">Logout</a> <!-- php/logout.php?logout_id=<?php echo $row['unique_id']; ?> -->
+        </header>
+        <div class="search">
+          <span class="text">Select an user to start chat</span>
+          <input type="text" placeholder="Enter name to search...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="users-list">
+    
+        </div>
+      </section>
+    </div>
 </body>
 <!-- Login -->
 <script src="javascript/pass-show-hide.js"></script>
