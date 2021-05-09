@@ -97,6 +97,8 @@
 <script type="text/javascript">
     $loginDiv = $('#logindiv');
     $signupDiv = $('#signupdiv');
+    $usersDiv = $('#usersListing');
+
     function showLoginDiv(){
         $loginDiv.css("display", "block");
         $signupDiv.css("display", "none");
@@ -105,6 +107,14 @@
     function showSignupDiv(){
         $loginDiv.css("display", "none");
         $signupDiv.css("display", "block");
+    }
+
+    function showUserListing(){
+      $.post('API/user.php',
+        {Evento: "getUserDetails"})
+      .done(function(data){
+        console.log(data);
+      });
     }
 </script>
 </html>
