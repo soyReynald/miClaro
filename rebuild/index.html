@@ -75,7 +75,7 @@
               <p id="user-status"></p>
             </div>
           </div>
-          <a href="#logout" class="logout">Logout</a> <!-- php/logout.php?logout_id=<?php echo $row['unique_id']; ?> -->
+          <a class="logout logout-btn">Logout</a> <!-- php/logout.php?logout_id=<?php echo $row['unique_id']; ?> -->
         </header>
         <div class="search">
           <span class="text">Select an user to start chat</span>
@@ -102,6 +102,7 @@
     const userImage = $('#userImageProfile');
     const userFullName = $('#user-fullname');
     const userStatus = $('#user-status');
+    const logoutBtn = $('.users .logout-btn');
 
     function showLoginDiv(){
         $loginDiv.css("display", "block");
@@ -124,6 +125,7 @@
         userImage.attr('src', 'images/'+data.imageProfile);
         userFullName.text(data.fullName);
         userStatus.text(data.status);
+        logoutBtn.attr("href", `API/logout.php?logout_id=${data.uniqueid}`);
       });
     }
 </script>
