@@ -17,10 +17,7 @@ if(isset($_POST['Evento']) && $_POST['Evento'] == "getUserDetails"){
         $response = array("fullName" => $fullName, "imageProfile" => $imageProfile, "status" => $status, "uniqueid" => $uniqueID, "id" => $_SESSION['unique_id']);
     
         echo json_encode($response);
-        echo "Test";
     }
-
-    
 }
 
 ?>

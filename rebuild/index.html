@@ -95,9 +95,13 @@
 <!-- Last SRIPTS -->
 <script src="javascript/jquery.js"></script>
 <script type="text/javascript">
-    $loginDiv = $('#logindiv');
-    $signupDiv = $('#signupdiv');
-    $usersDiv = $('#usersListing');
+    const $loginDiv = $('#logindiv');
+    const $signupDiv = $('#signupdiv');
+    
+    const $usersDiv = $('#usersListing');
+    const userImage = $('#userImageProfile');
+    const userFullName = $('#user-fullname');
+    const userStatus = $('#user-status');
 
     function showLoginDiv(){
         $loginDiv.css("display", "block");
@@ -113,7 +117,13 @@
       $.post('API/user.php',
         {Evento: "getUserDetails"})
       .done(function(data){
-        console.log(data);
+        $usersDiv.css("display", "block");
+        $loginDiv.css("display", "none");
+        
+        data = JSON.parse(data);
+        userImage.attr('src', 'images/'+data.imageProfile);
+        userFullName.text(data.fullName);
+        userStatus.text(data.status);
       });
     }
 </script>
