@@ -1,8 +1,8 @@
-const form = document.querySelector(".login form"),
-continueBtn = form.querySelector(".button input"),
-errorText = form.querySelector(".error-text");
+const formLogin = document.querySelector(".login form"),
+continueBtn = formLogin.querySelector(".button input"),
+errorText = formLogin.querySelector(".error-text");
 
-form.onsubmit = (e)=>{
+formLogin.onsubmit = (e)=>{
     e.preventDefault();
 }
 
@@ -22,6 +22,6 @@ continueBtn.onclick = ()=>{
           }
       }
     }
-    let formData = new FormData(form);
+    let formData = new FormData(formLogin);
     xhr.send(formData);
 }

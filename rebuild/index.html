@@ -87,6 +87,26 @@
         </div>
       </section>
     </div>
+    <div id="chatSection" class="wrapper" style="display: none;">
+      <section class="chat-area">
+        <header>
+          <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+          <img id="userImage-chat" alt="">
+          <div class="details">
+            <span id="fullName-chat"></span>
+            <p id="status-chat"></p>
+          </div>
+        </header>
+        <div class="chat-box">
+  
+        </div>
+        <form action="#" class="typing-area">
+          <input type="text" class="incoming_id" name="incoming_id" hidden>
+          <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+          <button><i class="fab fa-telegram-plane"></i></button>
+        </form>
+      </section>
+    </div>
 </body>
 <!-- Login -->
 <script src="javascript/pass-show-hide.js"></script>
@@ -97,12 +117,18 @@
 <script type="text/javascript">
     const $loginDiv = $('#logindiv');
     const $signupDiv = $('#signupdiv');
-    
     const $usersDiv = $('#usersListing');
+    const $chatDiv = $('#chatSection');
+
     const userImage = $('#userImageProfile');
     const userFullName = $('#user-fullname');
     const userStatus = $('#user-status');
     const logoutBtn = $('.users .logout-btn');
+
+    const userImageChat = $('#userImage-chat');
+    const fullNameChat = $('#fullName-chat');
+    const statusChat = $('#status-chat');
+    const incomingID = $('#chatSection form .incoming_id');
 
     function showLoginDiv(){
         $loginDiv.css("display", "block");
@@ -128,7 +154,24 @@
         logoutBtn.attr("href", `API/logout.php?logout_id=${data.uniqueid}`);
       });
     }
+
+    function chat(userID){
+      // <a href="chat.php?user_id='. $row['unique_id'] .'">
+      $.post('API/chat.php',
+        {Evento: "getUserChatDetails", user_id: userID})
+      .done(function(data){
+        $chatDiv.css("display", "block");
+        $usersDiv.css("display", "none");
+        data = JSON.parse(data);
+
+        userImageChat.attr('src', 'images/'+data.imageProfile);
+        fullNameChat.text(data.fullName);
+        statusChat.text(data.status);
+        incomingID.attr('value', userID);
+      });
+    }
 </script>
 
 <script src="javascript/users.js"></script>
+<script src="javascript/chat.js"></script>
 </html>
