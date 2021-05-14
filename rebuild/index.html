@@ -128,7 +128,7 @@
     const userImageChat = $('#userImage-chat');
     const fullNameChat = $('#fullName-chat');
     const statusChat = $('#status-chat');
-    const incomingID = $('#chatSection form .incoming_id');
+    var incomingID = $('#chatSection form .incoming_id');
 
     function showLoginDiv(){
         $loginDiv.css("display", "block");
@@ -167,7 +167,8 @@
         userImageChat.attr('src', 'images/'+data.imageProfile);
         fullNameChat.text(data.fullName);
         statusChat.text(data.status);
-        incomingID.attr('value', userID);
+        incoming_id = userID;
+        incomingID.attr("value", userID);
       });
     }
 </script>
